@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="net.chinaott.cms.core.system.repository.mybatis.RoleMenuRelMybatisDao">
+	<resultMap type="net.chinaott.cms.core.system.entity.RoleMenuRel" id="roleMenuRelResult">
+		<id column="ROLE_ID" property="roleId" />
+		<result column="MENU_ID" property="menuId" />
+        <result column="OPR_USERID" property="oprUserId" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="UPDATE_TIME" property="updateTime" />
+	</resultMap>
+
+	<delete id="deleteRoleMenuByRoleId" parameterType="Long">
+		delete from
+		role_menu_rel where role_id =#{roleId}
+	</delete>
+
+	<insert id="insertAllId" parameterType="Long">
+		INSERT INTO role_menu_rel
+		(role_id,menu_id)
+		values(#{roleId},#{menuId})
+	</insert>
+	
+	<select id="getRelByRoleId"  resultMap="roleMenuRelResult"  parameterType="Long">
+		select * from role_menu_rel where role_id =#{roleId}
+	</select>
+</mapper> 

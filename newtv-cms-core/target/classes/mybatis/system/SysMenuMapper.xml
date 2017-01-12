@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="net.chinaott.cms.core.system.repository.mybatis.SysMenuMybatisDao">
+	<resultMap type="net.chinaott.cms.core.system.entity.SysMenu" id="menuResult">
+		<id column="MENU_ID" property="id" />
+		<result column="MENU_NAME" property="name" />
+		<result column="MENU_ALIAS" property="alias" />
+		<result column="MENU_DESC" property="description" />
+		<result column="MENU_LINK" property="link" />
+		<result column="MENU_SORTNUM" property="sort" />
+		<result column="CREATE_TIME" property="createTime" />
+		<result column="UPDATE_TIME" property="updateTime" />
+		<result column="MENU_PARENTID" property="parentId" />
+	</resultMap>
+	<select id="getMaxSortNumByParentId" parameterType="Long" resultType="Integer">
+		select
+		max(MENU_SORTNUM)
+		from
+		menu where MENU_PARENTID= #{parentId}
+	</select>
+
+	<delete id="deleteByMenuLink" parameterType="String">
+
+		delete from menu where
+		MENU_LINK = #{link}
+	</delete>
+
+	<delete id="update" parameterType="net.chinaott.cms.core.system.entity.SysMenu">
+		update menu set MENU_SORTNUM =MENU_SORTNUM -1
+		where MENU_PARENTID =#{parentId} and MENU_SORTNUM > #{sort}
+	</delete>
+	
+	<!-- 	更新menu的序号 -->
+	<update id="updateMenuRelSort">
+		update menu m set m.MENU_SORTNUM = m.MENU_SORTNUM + #{offset} where m.MENU_ID=#{currMenuId};
+		update menu m set m.MENU_SORTNUM = m.MENU_SORTNUM - #{offset} where m.MENU_ID=#{relMenuId}
+	</update>
+
+	<select id="findMenuByUserId" parameterType="Long" resultMap="menuResult">
+		SELECT m.MENU_ID, m.MENU_NAME, m.MENU_ALIAS, m.MENU_DESC, m.MENU_LINK, m.MENU_SORTNUM, m.CREATE_TIME, m.UPDATE_TIME, m.MENU_PARENTID
+		FROM user_role_rel AS urr
+        INNER JOIN role_menu_rel AS rmr ON urr.ROLE_ID = rmr.ROLE_ID
+        LEFT JOIN menu AS m ON rmr.MENU_ID = m.MENU_ID
+		<where>
+		   urr.USER_ID = #{userId}
+		</where>
+		GROUP BY rmr.MENU_ID
+	</select>
+</mapper> 

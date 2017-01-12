@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.chinaott.cms.core.program.repository.mybatis.ProgramMyBatisDao" >
+  <resultMap id="BaseResultMap" type="net.chinaott.cms.core.program.entity.Program" >
+    <id column="program_id" property="programId" jdbcType="BIGINT" />
+    <result column="program_name" property="programName" jdbcType="VARCHAR" />
+    <result column="program_pinyin" property="programPinyin" jdbcType="VARCHAR" />
+    <result column="program_alias" property="programAlias" jdbcType="VARCHAR" />
+    <result column="program_en_name" property="programEnName" jdbcType="VARCHAR" />
+    <result column="subtitle" property="subtitle" jdbcType="VARCHAR" />
+    <result column="program_type" property="programType" jdbcType="VARCHAR" />
+    <result column="program_class" property="programClass" jdbcType="VARCHAR" />
+    <result column="zone" property="zone" jdbcType="VARCHAR" />
+    <result column="language" property="language" jdbcType="VARCHAR" />
+    <result column="years" property="years" jdbcType="VARCHAR" />
+    <result column="caption" property="caption" jdbcType="VARCHAR" />
+    <result column="program_length" property="programLength" jdbcType="INTEGER" />
+    <result column="set_number" property="setNumber" jdbcType="INTEGER" />
+    <result column="sort_num" property="sortNum" jdbcType="INTEGER" />
+    <result column="trial_dura" property="trialDura" jdbcType="INTEGER" />
+    <result column="premiere_date" property="premiereDate" jdbcType="DATE" />
+    <result column="premiere_channel" property="premiereChannel" jdbcType="VARCHAR" />
+    <result column="publish_date" property="publishDate" jdbcType="TIMESTAMP" />
+    <result column="definition_code" property="definitionCode" jdbcType="VARCHAR" />
+    <result column="default_definition" property="defaultDefinition" jdbcType="VARCHAR" />
+    <result column="horizontal_poster" property="horizontalPoster" jdbcType="VARCHAR" />
+    <result column="vertical_poster" property="verticalPoster" jdbcType="VARCHAR" />
+    <result column="out_source_id" property="outSourceId" jdbcType="VARCHAR" />
+    <result column="cp_code" property="cpCode" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="cdn_status" property="cdnStatus" jdbcType="VARCHAR" />
+    <result column="last_modify_date" property="lastModifyDate" jdbcType="TIMESTAMP" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="off_reason" property="offReason" jdbcType="VARCHAR" />
+    <result column="off_line_time" property="offLineTime" jdbcType="TIMESTAMP" />
+    <result column="re_on_reason" property="reOnReason" jdbcType="VARCHAR" />
+    <result column="del_reason" property="delReason" jdbcType="VARCHAR" />
+    <result column="publish_platform_ids" property="publishPlatformIds" jdbcType="VARCHAR" />
+    <result column="finish_platform_ids" property="finishPlatformIds" jdbcType="VARCHAR" />
+    <result column="is_cp_delete" property="isCpDelete" jdbcType="INTEGER" />
+    <result column="third_modify_time" property="thirdModifyTime" jdbcType="TIMESTAMP" />
+    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+    <result column="operate_type" property="operateType" jdbcType="VARCHAR" />
+    <result column="first_online_time" property="firstOnlineTime" jdbcType="TIMESTAMP" />
+    <result column="status_time" property="statusTime" jdbcType="TIMESTAMP" />
+    <result column="copyright_start_date" property="copyrightStartDate" jdbcType="DATE" />
+    <result column="copyright_end_date" property="copyrightEndDate" jdbcType="DATE" />
+    <result column="copyright_name" property="copyrightName" jdbcType="VARCHAR" />
+    <result column="film_cp_name" property="filmCpName" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="DECIMAL" />
+    <result column="manual_score" property="manualScore" jdbcType="DECIMAL" />
+    <result column="play_times" property="playTimes" jdbcType="BIGINT" />
+    <result column="manual_play_times" property="manualPlayTimes" jdbcType="BIGINT" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="is_preview" property="isPreview" jdbcType="INTEGER" />
+    <result column="is_full" property="isFull" jdbcType="INTEGER" />
+    <result column="is_3D" property="is3d" jdbcType="INTEGER" />
+    <result column="head_time" property="headTime" jdbcType="INTEGER" />
+    <result column="tail_time" property="tailTime" jdbcType="INTEGER" />
+    <result column="program_desc" property="programDesc" jdbcType="LONGVARCHAR" />
+    <result column="audit_desc" property="auditDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    program_id, program_name, program_pinyin, program_alias, program_en_name, subtitle, 
+    program_type, program_class, zone, language, years, caption, program_length, set_number, 
+    sort_num, trial_dura, premiere_date, premiere_channel, publish_date, definition_code, 
+    default_definition, horizontal_poster, vertical_poster, out_source_id, cp_code, status, 
+    cdn_status, last_modify_date, create_date, off_reason, off_line_time, re_on_reason, 
+    del_reason, publish_platform_ids, finish_platform_ids, is_cp_delete, third_modify_time, 
+    operate_time, operate_type, first_online_time, status_time, copyright_start_date, 
+    copyright_end_date, copyright_name, film_cp_name, score, manual_score, play_times, 
+    manual_play_times, update_user, is_preview, is_full, is_3D, head_time, tail_time,
+    program_desc, audit_desc
+  </sql>
+  
+  <select id="findList" parameterType="map" resultMap="BaseResultMap">
+  	select 
+  	<include refid="Base_Column_List" />
+  	from cms_program
+  	<where>
+  	
+  	</where>
+  	limit ${pageNo}, ${pageSize}
+  </select>
+  
+  <select id="getCount" parameterType="map" resultType="java.lang.Integer">
+  	select count(*)
+  	from cms_program
+  	<where>
+  	
+  	</where>
+  </select>
+  
+</mapper>

@@ -1,0 +1,35 @@
+package net.chinaott.cms.web.utils;
+
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
+/**
+ * 
+ * <上下文获取工具类><br />
+ * <功能详细描述>
+ *
+ * @author wangdx
+ * @version [版本号1.0, 2014年9月25日]
+ * @see [相关类/方法]
+ * @since [产品/模块版本]
+ */
+public class ApplicationContextUtil implements ApplicationContextAware
+{
+	private static ApplicationContext context = null;
+
+	@Override
+	public void setApplicationContext(ApplicationContext context) throws BeansException
+	{
+		if (null == ApplicationContextUtil.context)
+		{
+			ApplicationContextUtil.context = context;
+		}
+	}
+
+	public static ApplicationContext getContext()
+	{
+		return context;
+	}
+
+}

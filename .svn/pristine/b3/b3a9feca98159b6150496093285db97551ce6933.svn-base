@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.chinaott.cms.core.programseries.repository.mybatis.ProgramSeriesExtMyBatisDao" >
+  <resultMap id="BaseResultMap" type="net.chinaott.cms.core.programseries.entity.ProgramSeriesExt" >
+    <id column="ext_id" property="extId" jdbcType="BIGINT" />
+    <result column="program_series_id" property="programSeriesId" jdbcType="BIGINT" />
+    <result column="original_source" property="originalSource" jdbcType="VARCHAR" />
+    <result column="original_name" property="originalName" jdbcType="VARCHAR" />
+    <result column="story_time" property="storyTime" jdbcType="VARCHAR" />
+    <result column="story_locale" property="storyLocale" jdbcType="VARCHAR" />
+    <result column="story_event" property="storyEvent" jdbcType="VARCHAR" />
+    <result column="story_scenic_spot" property="storyScenicSpot" jdbcType="VARCHAR" />
+    <result column="story_theme" property="storyTheme" jdbcType="VARCHAR" />
+    <result column="story_ending" property="storyEnding" jdbcType="VARCHAR" />
+    <result column="story_plot" property="storyPlot" jdbcType="VARCHAR" />
+    <result column="story_picture" property="storyPicture" jdbcType="VARCHAR" />
+    <result column="story_sound" property="storySound" jdbcType="VARCHAR" />
+    <result column="story_lens" property="storyLens" jdbcType="VARCHAR" />
+    <result column="story_scene" property="storyScene" jdbcType="VARCHAR" />
+    <result column="hero_nature" property="heroNature" jdbcType="VARCHAR" />
+    <result column="hero_appearance" property="heroAppearance" jdbcType="VARCHAR" />
+    <result column="hero_historical_personage" property="heroHistoricalPersonage" jdbcType="VARCHAR" />
+    <result column="hero_position" property="heroPosition" jdbcType="VARCHAR" />
+    <result column="hero_fictional_personage" property="heroFictionalPersonage" jdbcType="VARCHAR" />
+    <result column="hero_dressing_style" property="heroDressingStyle" jdbcType="VARCHAR" />
+    <result column="heroine_nature" property="heroineNature" jdbcType="VARCHAR" />
+    <result column="heroine_appearance" property="heroineAppearance" jdbcType="VARCHAR" />
+    <result column="heroine_historical_personage" property="heroineHistoricalPersonage" jdbcType="VARCHAR" />
+    <result column="heroine_position" property="heroinePosition" jdbcType="VARCHAR" />
+    <result column="heroine_fictional_personage" property="heroineFictionalPersonage" jdbcType="VARCHAR" />
+    <result column="heroine_dressing_style" property="heroineDressingStyle" jdbcType="VARCHAR" />
+    <result column="cold_tag" property="coldTag" jdbcType="VARCHAR" />
+    <result column="film_plot" property="filmPlot" jdbcType="VARCHAR" />
+    <result column="film_color" property="filmColor" jdbcType="VARCHAR" />
+    <result column="film_rhythm" property="filmRhythm" jdbcType="VARCHAR" />
+    <result column="film_emotion" property="filmEmotion" jdbcType="VARCHAR" />
+    <result column="film_style" property="filmStyle" jdbcType="VARCHAR" />
+    <result column="box_office" property="boxOffice" jdbcType="BIGINT" />
+    <result column="award_date" property="awardDate" jdbcType="TIMESTAMP" />
+    <result column="award_name" property="awardName" jdbcType="VARCHAR" />
+    <result column="douban_score" property="doubanScore" jdbcType="DECIMAL" />
+    <result column="mtime_score" property="mtimeScore" jdbcType="DECIMAL" />
+    <result column="imdb_score" property="imdbScore" jdbcType="DECIMAL" />
+    <result column="vod_coefficient" property="vodCoefficient" jdbcType="DECIMAL" />
+    <result column="search_coefficient" property="searchCoefficient" jdbcType="DECIMAL" />
+    <result column="comprehensive_index" property="comprehensiveIndex" jdbcType="DECIMAL" />
+    <result column="hot_effect_index" property="hotEffectIndex" jdbcType="DECIMAL" />
+    <result column="family_structure" property="familyStructure" jdbcType="VARCHAR" />
+    <result column="weather" property="weather" jdbcType="VARCHAR" />
+    <result column="suitable_environment" property="suitableEnvironment" jdbcType="VARCHAR" />
+    <result column="viewing_time" property="viewingTime" jdbcType="VARCHAR" />
+    <result column="user_nature" property="userNature" jdbcType="VARCHAR" />
+    <result column="user_preference" property="userPreference" jdbcType="VARCHAR" />
+    <result column="user_using_frequency" property="userUsingFrequency" jdbcType="VARCHAR" />
+    <result column="user_need" property="userNeed" jdbcType="VARCHAR" />
+    <result column="user_audience" property="userAudience" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    ext_id, program_series_id, original_source, original_name, story_time, story_locale, 
+    story_event, story_scenic_spot, story_theme, story_ending, story_plot, story_picture, 
+    story_sound, story_lens, story_scene, hero_nature, hero_appearance, hero_historical_personage, 
+    hero_position, hero_fictional_personage, hero_dressing_style, heroine_nature, heroine_appearance, 
+    heroine_historical_personage, heroine_position, heroine_fictional_personage, heroine_dressing_style, 
+    cold_tag, film_plot, film_color, film_rhythm, film_emotion, film_style, box_office, 
+    award_date, award_name, douban_score, mtime_score, imdb_score, vod_coefficient, search_coefficient, 
+    comprehensive_index, hot_effect_index, family_structure, weather, suitable_environment, 
+    viewing_time, user_nature, user_preference, user_using_frequency, user_need, user_audience
+  </sql>
+
+</mapper>

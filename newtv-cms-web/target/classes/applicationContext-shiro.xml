@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd"
+	default-lazy-init="true">
+
+	<description>Shiro安全配置</description>
+
+
+    <!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!-- 用户授权信息Cache, 采用EhCache -->
+    <bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehcache/ehcache-shiro.xml"/>
+    </bean>
+
+
+	<!-- Shiro's main business-tier object for web-enabled applications Shiro安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<!--  继承AuthorizingRealm的实现登录方法-->
+		<property name="realm" ref="shiroDbRealm" />
+		<!-- 配置 cacheManager缓存，首先用户数据从缓存中获取-->
+		<property name="cacheManager" ref="shiroEhcacheManager" />
+	</bean>
+
+	<!-- 項目自定义的Realm, 所有accountService依赖的dao都需要用depends-on声明 -->
+	<bean id="shiroDbRealm" class="net.chinaott.cms.web.module.account.service.ShiroDbRealm"
+          depends-on="userDao,roleButtonRelDao,buttonDao,userRoleRelMybatisDao">
+		<property name="accountService" ref="accountService"/>
+	</bean>
+	
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login" />
+		<property name="successUrl" value="/" />
+		<property name="filterChainDefinitions">
+			<value>
+				/httpService/** = anon
+				/nodeserver/** = anon
+				/login = authc
+				/logout = logout
+				/static/** = anon
+				/api/** = anon
+				/register/** = anon
+				/admin/** =  user
+				/** = anon
+			</value>
+		</property>
+	</bean>
+	
+	<bean id="shiroAuditorAware" class="net.chinaott.cms.web.module.account.service.ShiroAuditorAware"/>
+    <jpa:auditing auditor-aware-ref="shiroAuditorAware" />
+
+</beans>

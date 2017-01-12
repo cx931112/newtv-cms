@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.chinaott.cms.core.program.repository.mybatis.ProgramDistributeStatusMyBatisDao" >
+  <resultMap id="BaseResultMap" type="net.chinaott.cms.core.program.entity.ProgramDistributeStatus" >
+    <id column="platform_id" property="platformId" jdbcType="BIGINT" />
+    <id column="program_rate_id" property="programRateId" jdbcType="BIGINT" />
+    <result column="distribute_status" property="distributeStatus" jdbcType="BIGINT" />
+    <result column="finish_time" property="finishTime" jdbcType="TIMESTAMP" />
+    <result column="cdn_status" property="cdnStatus" jdbcType="BIGINT" />
+    <result column="fail_reason" property="failReason" jdbcType="VARCHAR" />
+    <result column="play_url" property="playUrl" jdbcType="VARCHAR" />
+    <result column="replace_domain_play_url" property="replaceDomainPlayUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    platform_id, program_rate_id, distribute_status, finish_time, cdn_status, fail_reason, 
+    play_url, replace_domain_play_url
+  </sql>
+  
+</mapper>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="net.chinaott.cms.core.actor.repository.mybatis.ActorMybatisDao">
+<resultMap type="net.chinaott.cms.core.actor.entity.Actor" id="BaseResultMap">
+	<id column="actor_id" property="actorId" jdbcType="BIGINT" />
+	<result column="actor_name" property="actorName" jdbcType="VARCHAR" />
+	<result column="actor_name_pinyin" property="actorNamePinyin" jdbcType="VARCHAR" />
+	<result column="alias" property="alias" jdbcType="VARCHAR" />
+	<result column="sex" property="sex" jdbcType="VARCHAR" />
+	<result column="birthday" property="birthday" jdbcType="VARCHAR" />
+	<result column="actor_zodiac" property="actorZodiac" jdbcType="VARCHAR" />
+	<result column="native_address" property="nativeAddress" jdbcType="VARCHAR" />
+	<result column="actor_country" property="actorCountry" jdbcType="VARCHAR" />
+	<result column="out_source_id" property="outSourceId" jdbcType="VARCHAR" />
+	<result column="is_show" property="isShow" jdbcType="INTEGER" />
+	<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+</resultMap>
+
+	<resultMap type="net.chinaott.cms.core.actor.entity.Actor" id="DetailResultMap">
+		<id column="actor_id" property="actorId" jdbcType="BIGINT" />
+		<result column="actor_name" property="actorName" jdbcType="VARCHAR" />
+		<result column="actor_name_pinyin" property="actorNamePinyin" jdbcType="VARCHAR" />
+		<result column="alias" property="alias" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+		<result column="birthday" property="birthday" jdbcType="VARCHAR" />
+		<result column="actor_zodiac" property="actorZodiac" jdbcType="VARCHAR" />
+		<result column="native_address" property="nativeAddress" jdbcType="VARCHAR" />
+		<result column="actor_country" property="actorCountry" jdbcType="VARCHAR" />
+		<result column="actor_big_poster" property="actorBigPoster" jdbcType="VARCHAR" />
+		<result column="actor_small_poster" property="actorSmallPoster" jdbcType="VARCHAR" />
+		<result column="actor_desc" property="actorDesc" jdbcType="VARCHAR" />
+		<result column="out_source_id" property="outSourceId" jdbcType="VARCHAR" />
+		<result column="is_show" property="isShow" jdbcType="INTEGER" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+	</resultMap>
+
+<sql id="Base_Column_List" >
+	actor_id, actor_name, actor_name_pinyin, alias, sex, birthday, actor_zodiac, native_address,
+	actor_country, actor_big_poster, actor_small_poster, out_source_id, is_show, create_time
+</sql>
+
+	<select id="getActorList" parameterType="java.util.Map" resultMap="BaseResultMap">
+
+		SELECT
+		a.actor_id AS actor_id,
+		a.actor_name AS actor_name,
+		a.actor_name_pinyin AS actor_name_pinyin,
+		a.alias AS alias,
+		a.sex AS sex,
+		a.birthday AS birthday,
+		a.actor_zodiac AS actor_zodiac,
+		a.native_address AS native_address,
+		a.actor_country AS actor_country,
+		a.out_source_id AS out_source_id,
+		a.is_show AS is_show,
+		a.create_time AS create_time
+		FROM cms_actor a
+		WHERE 1=1
+		<if test="actorId!=null and actorId!=''">
+			and a.actor_id = #{actorId}
+		</if>
+		<if test="actorName != null and actorName!=''">
+			and a.actor_name LIKE CONCAT('%', CONCAT(#{actorName}, '%'))
+		</if>
+		<if test="isShow != null and isShow != ''">
+			and a.is_show = #{isShow}
+		</if>
+		limit #{start},#{offset}
+
+	</select>
+	<select id="getActorCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+
+		SELECT count(a.actor_id)
+		FROM cms_actor a
+		WHERE 1=1
+		<if test="actorId!=null and actorId!=''">
+			and a.actor_id = #{actorId}
+		</if>
+		<if test="actorName != null and actorName!=''">
+			and a.actor_name LIKE CONCAT('%', CONCAT(#{actorName}, '%'))
+		</if>
+		<if test="isShow != null and isShow != ''">
+			and a.is_show = #{isShow}
+		</if>
+	</select>
+	
+	<update id="updateActorIsShow" parameterType="net.chinaott.cms.core.actor.entity.Actor">
+
+		UPDATE cms_actor
+		SET is_show = #{isShow}
+		WHERE actor_id = #{actorId}
+
+	</update>
+
+	<select id="getActorDetailById" parameterType="net.chinaott.cms.core.actor.entity.Actor" resultMap="DetailResultMap">
+
+		SELECT
+		a.actor_id AS actor_id,
+		a.actor_name AS actor_name,
+		a.actor_name_pinyin AS actor_name_pinyin,
+		a.alias AS alias,
+		a.sex AS sex,
+		a.birthday AS birthday,
+		a.actor_zodiac AS actor_zodiac,
+		a.native_address AS native_address,
+		a.actor_country AS actor_country,
+		a.actor_big_poster AS actor_big_poster,
+		a.actor_small_poster AS actor_small_poster,
+		a.actor_desc AS actor_desc,
+		a.out_source_id AS out_source_id,
+		a.is_show AS is_show,
+		a.create_time AS create_time
+		FROM cms_actor a
+		WHERE a.actor_id = #{actorId}
+
+	</select>
+</mapper>

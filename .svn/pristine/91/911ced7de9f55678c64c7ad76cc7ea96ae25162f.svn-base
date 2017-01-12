@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.chinaott.cms.core.program.repository.mybatis.CdnTaskMyBatisDao" >
+  <resultMap id="BaseResultMap" type="net.chinaott.cms.core.program.entity.CdnTask" >
+    <id column="task_id" property="taskId" jdbcType="BIGINT" />
+    <result column="platform_id" property="platformId" jdbcType="VARCHAR" />
+    <result column="program_series_id" property="programSeriesId" jdbcType="BIGINT" />
+    <result column="program_series_name" property="programSeriesName" jdbcType="VARCHAR" />
+    <result column="program_id" property="programId" jdbcType="BIGINT" />
+    <result column="program_name" property="programName" jdbcType="VARCHAR" />
+    <result column="set_number" property="setNumber" jdbcType="INTEGER" />
+    <result column="priority" property="priority" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="sen_time" property="senTime" jdbcType="TIMESTAMP" />
+    <result column="return_time" property="returnTime" jdbcType="TIMESTAMP" />
+    <result column="fail_reason" property="failReason" jdbcType="VARCHAR" />
+    <result column="task_type" property="taskType" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    task_id, platform_id, program_series_id, program_series_name, program_id, program_name, 
+    set_number, priority, status, create_time, sen_time, return_time, fail_reason, task_type
+  </sql>
+  
+</mapper>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="net.chinaott.cms.core.actor.repository.mybatis.ActorTypeMybatisDao">
+	<resultMap type="net.chinaott.cms.core.actor.entity.ActorType" id="BaseResultMap">
+		<id column="type_id" property="typeId" jdbcType="INTEGER" />
+		<result column="type_value" property="typeValue" jdbcType="VARCHAR" />
+		<result column="type_name" property="typeName" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List" >
+		type_id, type_value, type_name
+	</sql>
+</mapper>

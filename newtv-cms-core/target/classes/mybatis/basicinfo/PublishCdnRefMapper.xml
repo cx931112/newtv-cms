@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.chinaott.cms.core.basicinfo.repository.mybatis.PublishCdnRefMyBatisDao" >
+  <resultMap id="BaseResultMap" type="net.chinaott.cms.core.basicinfo.entity.PublishCdnRef" >
+    <id column="rel_id" property="relId" jdbcType="INTEGER" />
+    <result column="publish_platform_id" property="publishPlatformId" jdbcType="INTEGER" />
+    <result column="cdn_platform_id" property="cdnPlatformId" jdbcType="INTEGER" />
+    <result column="cdn_platform_name" property="cdnPlatformName" jdbcType="VARCHAR" />
+    <result column="is_cdn_inject" property="isCdnInject" jdbcType="INTEGER" />
+    <result column="is_operator" property="isOperator" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rel_id, publish_platform_id, cdn_platform_id, cdn_platform_name, is_cdn_inject, is_operator
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from cms_publish_cdn_ref
+    where rel_id = #{relId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from cms_publish_cdn_ref
+    where rel_id = #{relId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="net.chinaott.cms.core.basicinfo.entity.PublishCdnRef" >
+    insert into cms_publish_cdn_ref (rel_id, publish_platform_id, cdn_platform_id, 
+      cdn_platform_name, is_cdn_inject, is_operator
+      )
+    values (#{relId,jdbcType=INTEGER}, #{publishPlatformId,jdbcType=INTEGER}, #{cdnPlatformId,jdbcType=INTEGER}, 
+      #{cdnPlatformName,jdbcType=VARCHAR}, #{isCdnInject,jdbcType=INTEGER}, #{isOperator,jdbcType=INTEGER}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="net.chinaott.cms.core.basicinfo.entity.PublishCdnRef" >
+    update cms_publish_cdn_ref
+    set publish_platform_id = #{publishPlatformId,jdbcType=INTEGER},
+      cdn_platform_id = #{cdnPlatformId,jdbcType=INTEGER},
+      cdn_platform_name = #{cdnPlatformName,jdbcType=VARCHAR},
+      is_cdn_inject = #{isCdnInject,jdbcType=INTEGER},
+      is_operator = #{isOperator,jdbcType=INTEGER}
+    where rel_id = #{relId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="findPublishFormIds" resultType="java.lang.String" parameterType="java.util.List">
+      SELECT group_concat(cdn_platform_id,";") FROM cms_publish_cdn_ref WHERE cdn_platform_id in
+      <foreach collection="publistPlatformIdList" open="(" close=")" separator="," item="publishPlatformId">
+          #{publishPlatformId,jdbcType=INTEGER}
+      </foreach>
+  </select>
+</mapper>

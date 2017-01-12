@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.chinaott.cms.core.programseries.repository.mybatis.ProgramSeriesMyBatisDao" >
+  <resultMap id="BaseResultMap" type="net.chinaott.cms.core.programseries.entity.ProgramSeries" >
+    <id column="program_series_id" property="programSeriesId" jdbcType="BIGINT" />
+    <result column="program_series_name" property="programSeriesName" jdbcType="VARCHAR" />
+    <result column="program_series_pinyin" property="programSeriesPinyin" jdbcType="VARCHAR" />
+    <result column="program_series_alias" property="programSeriesAlias" jdbcType="VARCHAR" />
+    <result column="program_series_en_name" property="programSeriesEnName" jdbcType="VARCHAR" />
+    <result column="subtitle" property="subtitle" jdbcType="VARCHAR" />
+    <result column="program_type" property="programType" jdbcType="VARCHAR" />
+    <result column="program_class" property="programClass" jdbcType="VARCHAR" />
+    <result column="zone" property="zone" jdbcType="VARCHAR" />
+    <result column="language" property="language" jdbcType="VARCHAR" />
+    <result column="years" property="years" jdbcType="VARCHAR" />
+    <result column="time_length" property="timeLength" jdbcType="INTEGER" />
+    <result column="trial_dura" property="trialDura" jdbcType="INTEGER" />
+    <result column="program_count" property="programCount" jdbcType="INTEGER" />
+    <result column="program_total_count" property="programTotalCount" jdbcType="INTEGER" />
+    <result column="premiere_date" property="premiereDate" jdbcType="DATE" />
+    <result column="premiere_channel" property="premiereChannel" jdbcType="VARCHAR" />
+    <result column="publish_date" property="publishDate" jdbcType="TIMESTAMP" />
+    <result column="definition_code" property="definitionCode" jdbcType="VARCHAR" />
+    <result column="default_definition" property="defaultDefinition" jdbcType="VARCHAR" />
+    <result column="small_poster_addr" property="smallPosterAddr" jdbcType="VARCHAR" />
+    <result column="big_poster_addr" property="bigPosterAddr" jdbcType="VARCHAR" />
+    <result column="horizontal_poster" property="horizontalPoster" jdbcType="VARCHAR" />
+    <result column="vertical_poster" property="verticalPoster" jdbcType="VARCHAR" />
+    <result column="background_poster" property="backgroundPoster" jdbcType="VARCHAR" />
+    <result column="out_source_id" property="outSourceId" jdbcType="VARCHAR" />
+    <result column="cp_code" property="cpCode" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="last_modify_date" property="lastModifyDate" jdbcType="TIMESTAMP" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="off_reason" property="offReason" jdbcType="VARCHAR" />
+    <result column="off_line_time" property="offLineTime" jdbcType="TIMESTAMP" />
+    <result column="re_on_reason" property="reOnReason" jdbcType="VARCHAR" />
+    <result column="del_reason" property="delReason" jdbcType="VARCHAR" />
+    <result column="publish_platform_ids" property="publishPlatformIds" jdbcType="VARCHAR" />
+    <result column="finish_platform_ids" property="finishPlatformIds" jdbcType="VARCHAR" />
+    <result column="is_cp_delete" property="isCpDelete" jdbcType="INTEGER" />
+    <result column="third_modify_time" property="thirdModifyTime" jdbcType="TIMESTAMP" />
+    <result column="operate_time" property="operateTime" jdbcType="TIMESTAMP" />
+    <result column="operate_type" property="operateType" jdbcType="VARCHAR" />
+    <result column="first_online_time" property="firstOnlineTime" jdbcType="TIMESTAMP" />
+    <result column="sort_type" property="sortType" jdbcType="VARCHAR" />
+    <result column="status_time" property="statusTime" jdbcType="TIMESTAMP" />
+    <result column="play_sort" property="playSort" jdbcType="VARCHAR" />
+    <result column="copyright_start_date" property="copyrightStartDate" jdbcType="DATE" />
+    <result column="copyright_end_date" property="copyrightEndDate" jdbcType="DATE" />
+    <result column="copyright_name" property="copyrightName" jdbcType="VARCHAR" />
+    <result column="film_cp_name" property="filmCpName" jdbcType="VARCHAR" />
+    <result column="score" property="score" jdbcType="DECIMAL" />
+    <result column="manual_score" property="manualScore" jdbcType="DECIMAL" />
+    <result column="play_times" property="playTimes" jdbcType="BIGINT" />
+    <result column="manual_play_times" property="manualPlayTimes" jdbcType="BIGINT" />
+    <result column="update_user" property="updateUser" jdbcType="VARCHAR" />
+    <result column="is_preview" property="isPreview" jdbcType="INTEGER" />
+    <result column="is_full" property="isFull" jdbcType="INTEGER" />
+    <result column="is_3D" property="is3d" jdbcType="INTEGER" />
+    <result column="program_series_desc" property="programSeriesDesc" jdbcType="LONGVARCHAR" />
+    <result column="audit_desc" property="auditDesc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    program_series_id, program_series_name, program_series_pinyin, program_series_alias, 
+    program_series_en_name, subtitle, program_type, program_class, zone, language, years, 
+    time_length, trial_dura, program_count, program_total_count, premiere_date, premiere_channel, 
+    publish_date, definition_code, default_definition, small_poster_addr, big_poster_addr, 
+    horizontal_poster, vertical_poster, background_poster, out_source_id, cp_code, status, 
+    last_modify_date, create_date, off_reason, off_line_time, re_on_reason, del_reason, 
+    publish_platform_ids, finish_platform_ids, is_cp_delete, third_modify_time, operate_time, 
+    operate_type, first_online_time, sort_type, status_time, play_sort, copyright_start_date, 
+    copyright_end_date, copyright_name, film_cp_name, score, manual_score, play_times, 
+    manual_play_times, update_user, is_preview, is_full, is_3D,  program_series_desc, audit_desc
+  </sql>
+
+</mapper>

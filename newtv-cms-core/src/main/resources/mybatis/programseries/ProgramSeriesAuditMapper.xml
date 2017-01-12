@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.chinaott.cms.core.programseries.repository.mybatis.ProgramSeriesAuditMyBatisDao" >
+  <resultMap id="BaseResultMap" type="net.chinaott.cms.core.programseries.entity.ProgramSeriesAudit" >
+    <id column="audit_log_id" property="auditLogId" jdbcType="BIGINT" />
+    <result column="program_series_id" property="programSeriesId" jdbcType="BIGINT" />
+    <result column="program_series_name" property="programSeriesName" jdbcType="VARCHAR" />
+    <result column="audit_type" property="auditType" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="audit_user" property="auditUser" jdbcType="VARCHAR" />
+    <result column="audit_desc" property="auditDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    audit_log_id, program_series_id, program_series_name, audit_type, status, audit_time, 
+    audit_user, audit_desc
+  </sql>
+
+</mapper>

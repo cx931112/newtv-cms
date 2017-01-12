@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须指向Dao接口 -->
+<mapper namespace="net.chinaott.cms.core.system.repository.mybatis.UserRoleRelMybatisDao">
+	<resultMap type="net.chinaott.cms.core.system.entity.UserRoleRel" id="userRoleRelResult">
+		<id column="ROLE_ID" property="roleId" />
+		<result column="USER_ID" property="userId" />
+
+	</resultMap>
+
+	<delete id="deleteUserRoleByUserId" parameterType="Long">
+		delete from
+		user_role_rel where user_id =#{userId}
+	</delete>
+
+	<delete id="deleteUserRoleByUserRoleId" parameterType="Long">
+		delete from
+		user_role_rel where user_id =#{userId} and role_id=#{roleId}
+	</delete>
+
+    <delete id="deleteUserRoleByRoleId" parameterType="Long">
+		delete from
+		user_role_rel where  role_id=#{roleId}
+	</delete>
+
+	<insert id="insertUserRoleAllId" parameterType="Long">
+		INSERT INTO user_role_rel
+		(user_id,role_id)
+		values(#{userId},#{roleId})
+	</insert>
+
+	<select id="getRelByUserId" resultMap="userRoleRelResult"
+		parameterType="Long">
+		select ROLE_ID,USER_ID from user_role_rel where user_id =#{userId}
+	</select>
+
+	<select id="getCountByUserRoleId" resultType="int"
+		parameterType="Long">
+		select count(1) from user_role_rel where user_id
+		=#{userId} and role_id=#{roleId}
+	</select>
+</mapper> 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.chinaott.cms.core.program.repository.mybatis.BaseTagMyBatisDao" >
+  <resultMap id="BaseResultMap" type="net.chinaott.cms.core.basetag.entity.BaseTag" >
+    <id column="tag_id" property="tagId" jdbcType="BIGINT" />
+    <result column="tag_type_name" property="tagTypeName" jdbcType="VARCHAR" />
+    <result column="tag_type_value" property="tagTypeValue" jdbcType="VARCHAR" />
+    <result column="tag_value" property="tagValue" jdbcType="VARCHAR" />
+    <result column="tag_name" property="tagName" jdbcType="VARCHAR" />
+    <result column="tag_sort" property="tagSort" jdbcType="INTEGER" />
+    <result column="is_operate" property="isOperate" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    tag_id, tag_type_name, tag_type_value, tag_value, tag_name, tag_sort, is_operate
+  </sql>
+  
+</mapper>
